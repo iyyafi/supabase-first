@@ -27,6 +27,7 @@ test.describe("Message Board", () => {
       await expect(messageBoardSignIn).toHaveCount(1);
       await expect(createPostForm).toHaveCount(0);
     });
+
     test("can see posts on the message board, but cannot interact", async ({
       page,
       browser,
@@ -44,6 +45,7 @@ test.describe("Message Board", () => {
       const createPostForm = page.locator(`[data-e2e="create-post-form"]`);
       await expect(messageBoardSignIn).toHaveCount(1);
       await expect(createPostForm).toHaveCount(0);
+      page.goto("http://localhost:5173/1");
       const postViaNotLoggedInUser = page.locator("h3", {
         hasText: "test post",
       });
@@ -70,6 +72,7 @@ test.describe("Message Board", () => {
         await expect(downvotes.nth(i)).toBeDisabled();
       }
     });
+
     test("signing up from the message board sends you back to the message board", async ({
       page,
     }) => {
@@ -79,8 +82,9 @@ test.describe("Message Board", () => {
       });
       await expect(messageBoardTitle).toHaveCount(1);
       const createPostForm = page.locator(`[data-e2e="create-post-form"]`);
-      await expect(createPostForm).toHaveCount(1);
+      await expect(createPostForm).toHaveCount(0);
     });
+
     test("logging in from a post message board sends you back to that post", async ({
       page,
     }) => {

@@ -14,7 +14,7 @@ test.describe("Up Voting", () => {
 
   test("upvoting works on main page", async ({ page }) => {
     await signUp(page, testUserEmail, testUserPassword, testUserName);
-    // const post = await createPost(page, "test post", "test contents");
+    await createPost(page, "test post", "test contents");
     const upvoteButton = page.locator(`[data-e2e="upvote"]`);
     const downvoteButton = page.locator(`[data-e2e="downvote"]`);
     await expect(upvoteButton).toHaveCount(1);
@@ -36,6 +36,7 @@ test.describe("Up Voting", () => {
     await expect(filledDownvoteButton).toHaveCount(1);
     await expect(filledUpvoteButton).toHaveCount(0);
   });
+
   test("upvoting works on post in post page", async ({ page }) => {
     await signUp(page, testUserEmail, testUserPassword, testUserName);
     const post = await createPost(page, "test post", "test contents");
@@ -61,6 +62,7 @@ test.describe("Up Voting", () => {
     await expect(filledDownvoteButton).toHaveCount(1);
     await expect(filledUpvoteButton).toHaveCount(0);
   });
+
   test("upvoting works on comment in post page", async ({ page }) => {
     await signUp(page, testUserEmail, testUserPassword, testUserName);
     const post = await createPost(page, "test post", "test contents");
