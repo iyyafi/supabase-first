@@ -45,6 +45,7 @@ export default function Login() {
         contents={
           <>
             <Auth
+              providers={[]}
               supabaseClient={supaClient}
               appearance={{
                 theme: ThemeSupa,
