@@ -4,7 +4,7 @@ import NavBar from "./NavBar";
 import MessageBoard from "./MessageBoard";
 import AllPosts from "./AllPosts";
 import { Welcome } from "./Welcome";
-import PostView from "./PostView";
+import { PostView } from "./Post";
 import { SupashipUserInfo, useSession } from "./use-session";
 import { welcomeLoader } from "./welcomeLoader";
 
